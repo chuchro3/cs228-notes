@@ -83,12 +83,12 @@ The latter case requires additional explanation. Suppose that $$C$$ is a Boolean
 
 These structures clearly describe the independencies encoded by a three-variable Bayesian net. We can extend them to general networks by applying them recursively over any larger graph. This leads to a notion called $$d$$-separation (where $$d$$ stands for directed).
 
-We say that $$Q$$, $$W$$ are $$d$$-separated when variables $$O$$ are observed if they are connected by an *active path*. An undirected path in the Bayesian Network structure $$G$$ is called *active* given observed variables $$O$$ if for every consecutive triple of variables $$X,Y,Z$$ on the path, one of the following holds:
+We say that $$Q$$, $$W$$ are $$d$$-separated when variables $$O$$ are observed if they are not connected by an *active path*. An undirected path in the Bayesian Network structure $$G$$ is called *active* given observed variables $$O$$ if for every consecutive triple of variables $$X,Y,Z$$ on the path, one of the following holds:
 
 - $$X \leftarrow Y \leftarrow Z$$, and $$Y$$ is unobserved $$Y \not\in O$$
 - $$X \rightarrow Y \rightarrow Z$$, and $$Y$$ is unobserved $$Y \not\in O$$
 - $$X \leftarrow Y \rightarrow Z$$, and $$Y$$ is unobserved $$Y \not\in O$$
-- $$X \leftarrow Y \leftarrow Z$$, and $$Y$$ or any of its descendents are observed.
+- $$X \rightarrow Y \leftarrow Z$$, and $$Y$$ or any of its descendents are observed.
 {% marginfigure 'dp2' 'assets/img/dsep2.png' 'In this example, $$X_1$$ and $$X_6$$ are $$d$$-separated given $$X_2, X_3$$.' %}{% marginfigure 'dp1' 'assets/img/dsep1.png' 'However, $$X_2, X_3$$ are not $$d$$-separated given $$X_1, X_6$$. There is an active pass which passed through the V-structure created when $$X_6$$ is observed.' %}
 
 For example, in the graph below, $$X_1$$ and $$X_6$$ are $$d$$-separated given $$X_2, X_3$$. However, $$X_2, X_3$$ are not $$d$$-separated given $$X_2, X_3$$, because we can find an active path $$(X_2, X_6, X_5, X_3)$$
